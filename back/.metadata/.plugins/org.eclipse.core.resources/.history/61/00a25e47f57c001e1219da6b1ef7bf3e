@@ -1,0 +1,27 @@
+package edu.poli;
+
+import java.util.List;
+
+import jakarta.inject.Inject;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+
+@Path("/products")
+public class GreetingResource {
+	
+	@Inject
+	Product product;
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Product> getAllProduct() {
+    	List<Product> products = product.listAll();
+        return products;
+    }
+    
+    public void createProduct(Product productIn) {
+    	
+    }
+}
