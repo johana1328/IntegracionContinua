@@ -1,0 +1,11 @@
+#Tue Nov 07 21:07:46 COT 2023
+ct=jbt
+a=finishWizard
+c=0
+s=0
+d=1699409266248
+v=2.3.100
+vl=How many times the 'Finish' button pressed during the day
+cmp=usage
+cl=org.jboss.tools.quarkus.ui.wizard.CodeProjectWizard
+l=Wizard class name

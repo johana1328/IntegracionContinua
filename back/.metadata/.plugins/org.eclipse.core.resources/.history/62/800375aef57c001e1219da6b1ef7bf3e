@@ -1,0 +1,39 @@
+package edu.poli;
+
+import java.net.URI;
+import java.util.List;
+
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+
+@Path("/products")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public class GreetingResource {
+	
+	@Inject
+	Product product;
+
+    @GET
+    public List<Product> getAllProduct() {
+    	return product.listAll();
+    }
+    
+    @POST
+    @Transactional
+    public Response createProduct(Product productIn) {
+    	product.id=productIn.id;
+    	product.name=productIn.name;
+    	product.stock=productIn.stock;
+    	product.price=productIn.price;
+    	product.persist();
+    	 return Response.created(URI.create("/products/" + productIn.id)).build();
+    }
+}

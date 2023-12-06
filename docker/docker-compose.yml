@@ -1,0 +1,35 @@
+version: '3.0'
+
+services:
+  bd:
+    image: postgres:14-alpine
+    container_name: bd_app
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=comerce
+    networks:
+      - net_connet
+  back:
+    container_name: back_app
+    build: ./back
+    depends_on:
+      - bd
+    ports:
+      - "8080:8080"
+    networks:
+      - net_connet
+  web:
+    container_name: web_app
+    build: ./web
+    depends_on:
+      - back
+    ports:
+      - "3000:80"
+    networks:
+      - net_connet
+  
+networks:
+  net_connet:

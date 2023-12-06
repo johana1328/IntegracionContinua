@@ -1,0 +1,13 @@
+quarkus.resteasy.path=/services
+quarkus.http.cors=true
+quarkus.http.cors.origins=*
+quarkus.http.cors.headers=accept, authorization, content-type, x-requested-with
+quarkus.http.cors.methods=GET, OPTIONS, POST, PUT, DELETE
+
+
+quarkus.datasource.db-kind=h2
+quarkus.datasource.jdbc.url=jdbc:h2:file:./database;AUTO_SERVER=true;DB_CLOSE_DELAY=-1
+
+quarkus.hibernate-orm.dialect=org.hibernate.dialect.H2Dialect
+quarkus.hibernate-orm.database.generation=drop-and-create
+quarkus.hibernate-orm.log.sql=true
