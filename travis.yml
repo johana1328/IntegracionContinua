@@ -1,5 +1,3 @@
-arch: amd64
-
 language: java
 
 jdk: 
